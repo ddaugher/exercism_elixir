@@ -6,6 +6,9 @@ defmodule Words do
   """
   @spec count(String.t) :: map
   def count(sentence) do
+    eval = fn(word, map) ->
+      Map.put(map, word, (map[word] || 0) + 1)
+    end
 
     sentence
     |> downcase
@@ -13,16 +16,10 @@ defmodule Words do
     |> ignore_underscores
     |> ignore_comma
     |> String.split
-    |> count_words
-
+    |> Enum.reduce(%{}, eval)
   end
 
-  defp count_words(list) do
-    eval = fn(word, map) ->
-      Map.put(map, word, (map[word] || 0) + 1)
-    end
-
-    list |> Enum.reduce(%{}, eval)
+  defp count_words(sentence) do
   end
 
   defp ignore_special_chars(sentence) do
