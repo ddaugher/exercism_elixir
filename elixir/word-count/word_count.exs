@@ -9,7 +9,7 @@ defmodule Words do
 
     sentence
     |> downcase
-    |> ignore_punctuation
+    |> ignore_special_chars
     |> ignore_underscores
     |> ignore_comma
     |> String.split
@@ -25,7 +25,7 @@ defmodule Words do
     list |> Enum.reduce(%{}, eval)
   end
 
-  defp ignore_punctuation(sentence) do
+  defp ignore_special_chars(sentence) do
     sentence |> String.replace(~r/[:!&@$%^&]/, "")
   end
 
