@@ -5,8 +5,21 @@ defmodule Words do
   Words are compared case-insensitively.
   """
   @spec count(String.t) :: map
-
   def count(sentence) do
-    Map.put(%{}, "word", 1 )
+
+    sentence
+    |> String.split(" ")
+    |> count_words
+
   end
+
+  defp count_words(list) do
+
+    eval = fn(word, map) ->
+      Map.put(map, word, (map[word] || 0) + 1)
+    end
+
+    list |> Enum.reduce(%{}, eval)
+  end
+
 end
