@@ -10,6 +10,7 @@ defmodule Words do
     sentence
     |> ignore_punctuation
     |> ignore_underscores
+    |> ignore_comma
     |> String.split
     |> count_words
 
@@ -25,6 +26,10 @@ defmodule Words do
 
   defp ignore_punctuation(sentence) do
     sentence |> String.replace(~r/[,:!&@$%^&]/, "")
+  end
+
+  defp ignore_comma(sentence) do
+    sentence |> String.replace(~r/[,]/, "")
   end
 
   defp ignore_underscores(sentence) do
