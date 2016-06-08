@@ -8,7 +8,7 @@ defmodule Words do
   def count(sentence) do
 
     sentence
-    |> String.downcase
+    |> downcase
     |> ignore_punctuation
     |> ignore_underscores
     |> ignore_comma
@@ -27,6 +27,10 @@ defmodule Words do
 
   defp ignore_punctuation(sentence) do
     sentence |> String.replace(~r/[,:!&@$%^&]/, "")
+  end
+
+  defp downcase(sentence) do
+    sentence |> String.downcase
   end
 
   defp ignore_comma(sentence) do
