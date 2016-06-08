@@ -8,6 +8,7 @@ defmodule Words do
   def count(sentence) do
 
     sentence
+    |> String.downcase
     |> ignore_punctuation
     |> ignore_underscores
     |> ignore_comma
