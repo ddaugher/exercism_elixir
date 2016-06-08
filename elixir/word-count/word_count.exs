@@ -26,7 +26,7 @@ defmodule Words do
   end
 
   defp ignore_punctuation(sentence) do
-    sentence |> String.replace(~r/[,:!&@$%^&]/, "")
+    sentence |> String.replace(~r/[:!&@$%^&]/, "")
   end
 
   defp downcase(sentence) do
