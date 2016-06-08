@@ -19,9 +19,6 @@ defmodule Words do
     |> Enum.reduce(%{}, eval)
   end
 
-  defp count_words(sentence) do
-  end
-
   defp ignore_special_chars(sentence) do
     sentence |> String.replace(~r/[:!&@$%^&]/, "")
   end
