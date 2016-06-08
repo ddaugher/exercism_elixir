@@ -14,7 +14,7 @@ defmodule Words do
     |> downcase
     |> ignore_special_chars
     |> ignore_underscores
-    |> ignore_comma
+    |> ignore_commas
     |> String.split
     |> Enum.reduce(%{}, eval)
   end
@@ -27,7 +27,7 @@ defmodule Words do
     sentence |> String.downcase
   end
 
-  defp ignore_comma(sentence) do
+  defp ignore_commas(sentence) do
     sentence |> String.replace(~r/[,]/, "")
   end
 
