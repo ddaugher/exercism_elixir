@@ -8,18 +8,22 @@ defmodule Words do
   def count(sentence) do
 
     sentence
-    |> String.split(" ")
+    |> ignore_punctuation
+    |> String.split
     |> count_words
 
   end
 
   defp count_words(list) do
-
     eval = fn(word, map) ->
       Map.put(map, word, (map[word] || 0) + 1)
     end
 
     list |> Enum.reduce(%{}, eval)
+  end
+
+  defp ignore_punctuation(sentence) do
+    sentence |> String.replace(~r/[:!&@$%^&]/, "")
   end
 
 end
