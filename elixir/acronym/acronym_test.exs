@@ -16,7 +16,6 @@ defmodule AcronymTest do
     assert Acronym.abbreviate("Ruby on Rails") === "ROR"
   end
 
-  @tag :pending
   test "it produces acronyms from inconsistent case" do
     assert Acronym.abbreviate("HyperText Markup Language") === "HTML"
   end
