@@ -7,6 +7,7 @@ defmodule Acronym do
   def abbreviate(string) do
     string
     |> insert_space_at_cap
+    |> ignore_commas
     |> String.split
     |> acronym
   end
@@ -21,6 +22,10 @@ defmodule Acronym do
 
   defp insert_space_at_cap(string) do
     String.replace(string, ~r/([[:upper:]])/, " \\1")
+  end
+
+  defp ignore_commas(sentence) do
+    sentence |> String.replace(~r/[,]/, "")
   end
 
 end
